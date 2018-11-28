@@ -1,0 +1,13 @@
+{
+  "name": "eslint-gridsome",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "eslint tests/* --rulesdir rules"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-plugin-vue": "^4.7.1"
+  }
+}
