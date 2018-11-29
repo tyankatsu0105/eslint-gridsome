@@ -18,16 +18,16 @@ tester.run('page-query', rule, {
     code: `
         <template></template>
         <page-query>
-        query Blog {
-          allWordPressPost (limit: 5) {
-            edges {
-              node {
-                id
-                title
+          query Blog {
+            allWordPressPost (limit: 5) {
+              edges {
+                node {
+                  id
+                  title
+                }
               }
             }
           }
-        }
         </page-query>
     `
   }],
@@ -50,17 +50,18 @@ tester.run('page-query', rule, {
     output: `
         <template></template>
         <page-query>
-        query Blog {
-          allWordPressPost (limit: 5) {
-            edges {
-              node {
-                id
-                title
-              }
-            }
-          }
-        }
-        </page-query>
+query Blog {
+  allWordPressPost(limit: 5) {
+    edges {
+      node {
+        id
+        title
+      }
+    }
+  }
+}
+
+</page-query>
     `,
     errors: ["format is incorrect"]
   }],
