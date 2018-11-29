@@ -16,40 +16,37 @@ var tester = new RuleTester({
 tester.run('page-query', rule, {
   valid: [{
     code: `
-        <template></template>
-        <page-query>
-          query Blog {
-            allWordPressPost (limit: 5) {
-              edges {
-                node {
-                  id
-                  title
-                }
-              }
-            }
-          }
-        </page-query>
+query Blog {
+  allWordPressPost(limit: 5) {
+    edges {
+      node {
+        id
+        title
+      }
+    }
+  }
+}
     `
   }],
   invalid: [{
     code: `
-        <template></template>
-        <page-query>
-        query Blog {
-                      allWordPressPost(limit: 5) {
-                  edges{
-              node {
-                id
-                title
-            }
-            }
-          }
-        }
-        </page-query>
+<template></template>
+<page-query>
+query Blog {
+              allWordPressPost(limit: 5){
+          edges{
+      node {
+        id
+        title
+    }
+    }
+  }
+}
+</page-query>
     `,
     output: `
-        <template></template>
-        <page-query>
+<template></template>
+<page-query>
 query Blog {
   allWordPressPost(limit: 5) {
     edges {
