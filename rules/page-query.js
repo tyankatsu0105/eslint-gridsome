@@ -1,11 +1,16 @@
-"use strict"
+/**
+ * @author tyankatsu
+ * @copyright 2018 tyankatsu. All rights reserved.
+ * See LICENSE file in root directory for full license.
+ */
+'use strict'
 
 const prettier = require("prettier");
 const prettierParser = 'graphql'
 
 module.exports = {
   meta: {
-    description: ""
+    fixable: 'code',
   },
   create(context) {
     const sourceCode = context.getSourceCode()
@@ -21,24 +26,28 @@ module.exports = {
         for (const node of topLevelNodes) {
           if (node.type === "VElement" && node.name === "page-query") {
 
-            // <page-query>の中のstringの取得
-            const value = node.children[0].value
+            const codeRange = [
+              node.startTag.range[1],
+              node.endTag ? node.endTag.range[0] : node.range[1],
+            ]
+            const code = sourceCode.text.slice(...codeRange).trim()
 
-            function reportIssue(node) {
+            const formattedCode = prettier.format(code, {
+              parser: prettierParser
+            });
+
+            // 整形した結果が現在と異なっていれば報告する
+            if (formattedCode !== code) {
               context.report({
                 loc: node.loc,
                 message: `format is incorrect`,
 
-                fix() {
-                  // prettierで整形済みのstring
-                  const formattedValue = prettier.format(value, {
-                    parser: prettierParser
-                  });
-                  return formattedValue
+                fix(fixer) {
+                  return fixer.replaceTextRange(codeRange, `\n${formattedCode}\n`)
                 }
               })
             }
-            reportIssue(node)
+
           }
         }
       }

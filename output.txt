@@ -1,4 +1,24 @@
 yarn run v1.12.3
 $ eslint tests/* --rulesdir rules
-{ start: { line: 9, column: 0 }, end: { line: 28, column: 13 } }
+code is ...query Blog {
+        allWordPressPost (limit: 5) {
+    edges {
+      node {
+        id
+        title
+      }
+    }
+  }
+}
+prettier is ...query Blog {
+  allWordPressPost(limit: 5) {
+    edges {
+      node {
+        id
+        title
+      }
+    }
+  }
+}
+
 Done in 0.53s.

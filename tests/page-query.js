@@ -15,14 +15,7 @@ var tester = new RuleTester({
 })
 tester.run('page-query', rule, {
   valid: [{
-    filename: 'test.vue',
     code: `
-        <template>
-          <div>aaaa</div>
-        </template>
-        <script>
-          const script = 111;
-        </script>
         <page-query>
         query Blog {
           allWordPressPost (limit: 5) {
@@ -35,39 +28,37 @@ tester.run('page-query', rule, {
           }
         }
         </page-query>
-        <style lang="scss" scoped>
-        div {
-          font-size: 2rem;
-          padding: 10px;
-        }
-        </style>`
+    `
   }],
   invalid: [{
-    filename: 'test.vue',
     code: `
-        <template>
-          <div>aaaa</div>
-        </template>
-        <script>
-          const script = 111;
-        </script>
         <page-query>
         query Blog {
-                    allWordPressPost (limit: 5) {
-                        edges {
-                  node {
-                          id
-                    title
-                }
-                }
-                  }
+                      allWordPressPost(limit: 5) {
+                  edges{
+              node {
+                id
+                title
+            }
+            }
           }
-              </page-query>
-        <style lang="scss" scoped>
-        div {
-          font-size: 2rem;
-          padding: 10px;
         }
-        </style>`
+        </page-query>
+    `,
+    output: `
+        <page-query>
+        query Blog {
+          allWordPressPost (limit: 5) {
+            edges {
+              node {
+                id
+                title
+              }
+            }
+          }
+        }
+        </page-query>
+    `,
+    errors: ["format is incorrect"]
   }],
 })
