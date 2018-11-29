@@ -4,7 +4,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../rules/page-query')
+var rule = require('../lib/rules/page-query')
 var RuleTester = require('eslint').RuleTester;
 
 var tester = new RuleTester({
@@ -16,6 +16,7 @@ var tester = new RuleTester({
 tester.run('page-query', rule, {
   valid: [{
     code: `
+        <template></template>
         <page-query>
         query Blog {
           allWordPressPost (limit: 5) {
@@ -32,6 +33,7 @@ tester.run('page-query', rule, {
   }],
   invalid: [{
     code: `
+        <template></template>
         <page-query>
         query Blog {
                       allWordPressPost(limit: 5) {
@@ -46,6 +48,7 @@ tester.run('page-query', rule, {
         </page-query>
     `,
     output: `
+        <template></template>
         <page-query>
         query Blog {
           allWordPressPost (limit: 5) {

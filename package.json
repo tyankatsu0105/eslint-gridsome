@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "test": "mocha tests/*.js",
-    "lint": "eslint . --rulesdir rules",
-    "log": "eslint tests/* --rulesdir rules"
+    "lint": "eslint . --rulesdir lib/rules",
+    "log": "eslint tests/* --rulesdir lib/rules"
   },
   "devDependencies": {
     "eslint": "^5.9.0",
