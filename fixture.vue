@@ -6,7 +6,7 @@ const script = 111;
 </script>
 <page-query>
 query Blog {
-        allWordPressPost (limit: 5) {
+      allWordPressPost (limit: 5) {
     edges {
       node {
         id

@@ -4,12 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "mocha tests/*.js",
+    "test": "mocha tests/lib/rules/*.js",
     "lint": "eslint . --rulesdir lib/rules",
     "log": "eslint tests/* --rulesdir lib/rules"
   },
   "devDependencies": {
     "eslint": "^5.9.0",
+    "eslint-plugin-vue": "^4.7.1",
     "mocha": "^5.2.0",
     "prettier": "^1.15.2",
     "vue-eslint-parser": "^3.3.0"

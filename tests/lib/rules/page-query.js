@@ -4,7 +4,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../lib/rules/page-query')
+var rule = require('../../../lib/rules/page-query')
 var RuleTester = require('eslint').RuleTester;
 
 var tester = new RuleTester({
@@ -16,6 +16,7 @@ var tester = new RuleTester({
 tester.run('page-query', rule, {
   valid: [{
     code: `
+<page-query>
 query Blog {
   allWordPressPost(limit: 5) {
     edges {
@@ -26,6 +27,7 @@ query Blog {
     }
   }
 }
+</page-query>
     `
   }],
   invalid: [{
