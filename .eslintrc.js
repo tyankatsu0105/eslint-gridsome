@@ -5,6 +5,6 @@ module.exports = {
   },
   extends: ["plugin:vue/recommended"],
   rules: {
-    "test-rule": 2,
+    "page-query": 2,
   }
 };
