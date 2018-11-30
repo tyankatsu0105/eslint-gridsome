@@ -2,20 +2,24 @@
   <div>aaaa</div>
 </template>
 <script>
-const script = 111;
+    const script = 111;
 </script>
+
 <page-query>
 query Blog {
       allWordPressPost (limit: 5) {
     edges {
-      node {
-        id
+                          node {
+          id
+
+
         title
       }
     }
   }
 }
 </page-query>
+
 <style lang="scss" scoped>
 div {
   font-size: 2rem;

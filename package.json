@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "mocha tests/lib/rules/*.js",
-    "lint": "eslint . --rulesdir lib/rules",
-    "log": "eslint tests/* --rulesdir lib/rules"
+    "lint": "eslint . --ext .vue  --rulesdir lib/rules"
   },
   "devDependencies": {
     "eslint": "^5.9.0",
