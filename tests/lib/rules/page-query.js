@@ -59,7 +59,6 @@ query Blog {
     }
   }
 }
-
 </page-query>
     `,
     errors: ["format is incorrect"]

@@ -7,11 +7,10 @@
 
 <page-query>
 query Blog {
-      allWordPressPost (limit: 5) {
+  allWordPressPost(limit: 5) {
     edges {
-                          node {
-          id
-
+      node {
+        id
 
         title
       }
